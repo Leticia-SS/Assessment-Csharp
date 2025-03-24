@@ -30,6 +30,7 @@ namespace exercicio06
             Console.WriteLine($"Matrícula: {_Matricula}");
             Console.WriteLine($"Curso: {_Curso}");
             Console.WriteLine($"Média das notas: {_MediaDasNotas}");
+            Console.WriteLine("\n");
         }
 
         // Método para erificar aprovação
