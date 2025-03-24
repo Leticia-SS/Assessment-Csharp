@@ -8,14 +8,13 @@
         string[] arrayFrase = frase.Split(' ');
 
 
-        foreach (string palavra in arrayFrase)
+        for (int n= 0; n < arrayFrase.Length; n++)
         {
-            Console.WriteLine(palavra);
             string novaPalavra = "";
-            for (int i = 0; i < palavra.Length; i++)
+            for (int i = 0; i < arrayFrase[n].Length; i++)
             {
+                string palavra = arrayFrase[n];
                 char letra = (char)(palavra[i] + 2);
-                Console.Write(letra);
                 novaPalavra += letra;
             }
             Console.WriteLine(novaPalavra);
