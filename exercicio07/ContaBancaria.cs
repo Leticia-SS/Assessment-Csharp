@@ -9,34 +9,50 @@ namespace exercicio07
     internal class ContaBancaria
     {
         public string _Titular;
-        private double _Saldo;
+        private double _Saldo = 0.0;
 
         //Construtor para criar objeto inserindo os parametros
-        public ContaBancaria(string titular, double saldo)
+        public ContaBancaria(string titular)
         {
             _Titular = titular;
-            _Saldo = saldo;
+        }
+
+        // Método exibir apenas titular
+        public void ExibirTitular()
+        {
+            Console.WriteLine($"Titular: {_Titular}");
         }
 
         // Método Depositar
-        public double Depositar(double valor)
+        public string Depositar(double valor)
         {
-            return _Saldo + valor;
+            if (valor <= 0) 
+            {
+                return "O valor do depósito deve ser positivo\n";
+            } else
+            {
+                _Saldo += valor;
+                return $"Depósito de {valor} realizado com sussesso!\n";
+            }
         }
 
         // Método Sacar
-        public double Sacar(double valor)
+        public string Sacar(double valor)
         {
-            return _Saldo - valor;
+            if (valor < _Saldo) 
+            {
+                return "Saldo insuficiente para realizar o saque!\n";
+            } else
+            {
+                _Saldo -= valor;
+                return $"Saque de {valor} realizado com sucesso!\n";
+            }
         }
 
         // Método para exibir dados da conta
         public void ExibirDados()
         {
-            Console.WriteLine("=====================");
-            Console.WriteLine($"Titular: {_Titular}");
-            Console.WriteLine($"Saldo: R${_Saldo}");
-            Console.WriteLine("\n");
+            Console.WriteLine($"Saldo atual: R${_Saldo}\n");
         }
 
 
