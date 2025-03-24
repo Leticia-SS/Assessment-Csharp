@@ -30,6 +30,15 @@ namespace exercicio07
             return _Saldo - valor;
         }
 
+        // Método para exibir dados da conta
+        public void ExibirDados()
+        {
+            Console.WriteLine("=====================");
+            Console.WriteLine($"Titular: {_Titular}");
+            Console.WriteLine($"Saldo: R${_Saldo}");
+            Console.WriteLine("\n");
+        }
+
 
 
 
