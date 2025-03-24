@@ -32,16 +32,17 @@ namespace exercicio06
             Console.WriteLine($"Média das notas: {_MediaDasNotas}");
         }
 
-        // Método para calcular a média das notas
-        public double CalcularMedia(double[] notas)
+        // Método para erificar aprovação
+        public void VerificarAprovacao()
         {
-            int soma = 0;
-            for (int i = 0; i < notas.Length; i++)
+            if (_MediaDasNotas >= 7)
             {
-                soma += Convert.ToInt32(notas[i]);
+                Console.WriteLine("Aluno aprovado");
             }
-            _MediaDasNotas = soma / notas.Length;
-            return _MediaDasNotas;
+            else
+            {
+                Console.WriteLine("Aluno reprovado");
+            }
         }
 
 
