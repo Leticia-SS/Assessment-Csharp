@@ -17,12 +17,11 @@
                 char letra = (char)(palavra[i] + 2);
                 novaPalavra += letra;
             }
+            arrayFrase[n] = novaPalavra;
             Console.WriteLine(novaPalavra);
 
         }
 
-        Console.WriteLine(arrayFrase[0]);
-        Console.WriteLine(arrayFrase[1]);
 
     }
 }
