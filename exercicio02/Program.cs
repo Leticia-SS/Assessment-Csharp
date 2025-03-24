@@ -7,7 +7,17 @@
 
         string[] arrayFrase = frase.Split(' ');
 
+        Console.WriteLine("");
 
+        Console.Write("Frase antes: ");
+        foreach(string palavra in arrayFrase)
+        {
+            Console.Write(palavra + " ");
+        }
+
+        Console.WriteLine("");
+
+        Console.Write("Frase depois: ");
         for (int n= 0; n < arrayFrase.Length; n++)
         {
             string novaPalavra = "";
@@ -18,10 +28,10 @@
                 novaPalavra += letra;
             }
             arrayFrase[n] = novaPalavra;
-            Console.WriteLine(novaPalavra);
+            Console.Write(novaPalavra + " ");
 
         }
-
+        Console.WriteLine("");
 
     }
 }
