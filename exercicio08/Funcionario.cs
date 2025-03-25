@@ -10,18 +10,18 @@ namespace exercicio08
     {
         private string _Nome;
         private string _Cargo;
-        private double SalarioBase;
+        protected double _SalarioBase;
 
-        public double _SalarioBase
+        public virtual double SalarioBase
         {
-            get => SalarioBase;
-            set => SalarioBase = value;
+            get => _SalarioBase;
+            set => _SalarioBase = value;
 
         }
 
         public void ExibirDados()
         {
-            Console.WriteLine($"Saldo atual: R${SalarioBase}\n");
+            Console.WriteLine($"Saldo atual: R${_SalarioBase}\n");
         }
     }
 }

@@ -9,8 +9,8 @@ class Program
         Gerente gerente = new Gerente();
 
         // Salvando o salário base
-        funcionario.SetSalarioBase = 1000;
-        gerente.SetSalarioBase = 1000;
+        funcionario.SalarioBase = 1000;
+        gerente.SalarioBase = 1000;
 
         // Printando os dados a exibir
         funcionario.ExibirDados();
