@@ -8,11 +8,9 @@ namespace exercicio08
 {
     internal class Gerente : Funcionario
     {
-        public override double SalarioBase
+        public override void ExibirDados()
         {
-            get => base._SalarioBase;
-            set => base._SalarioBase = value * 1.2;
-
+            Console.WriteLine($"Saldo atual do Gerente: R${_SalarioBase * 1.2}\n");
         }
 
     }
