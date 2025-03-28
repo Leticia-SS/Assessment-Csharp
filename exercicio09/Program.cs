@@ -54,7 +54,6 @@ class Program
                     break;
                 case 2:
                     // Printando todos os produtos em estoque
-                    Console.WriteLine("\n");
                     foreach (Produto produto in estoque)
                     {
                         // Não mostra produtos que sejam nullos, ou deja, que ainda não existem no array 
@@ -72,7 +71,7 @@ class Program
 
                     break;
                 default:
-                    Console.WriteLine("Opção inválida! Escolha uma opção válida . . .\n");
+                    Console.WriteLine("\nOpção inválida! Escolha uma opção válida . . .\n");
 
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
 
@@ -92,6 +91,7 @@ class Program
     // Método do Menu
     public static byte Menu() 
     {
+        Console.Clear();
         Console.WriteLine("==========MENU==========");
         Console.WriteLine("Escolha uma das opções:\n\n1 - Inserir Produto\n2 - Listar Produtos\n3 - Sair\n");
         Console.WriteLine($"Cadastro Máximo de: 5");
