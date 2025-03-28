@@ -8,7 +8,7 @@ namespace exercicio07
 {
     internal class ContaBancaria
     {
-        public string _Titular;
+        private string _Titular;
         private double _Saldo;
 
         //Construtor para criar objeto inserindo os parametros
