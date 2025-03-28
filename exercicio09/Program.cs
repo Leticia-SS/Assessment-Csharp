@@ -17,6 +17,15 @@ class Program
             switch (opcao) 
             {
                 case 1:
+                    // Se o limite do estoque for atingido ele retorna a mensagem e da break no loop
+                    if (tamanhoEstoque >= 5)
+                    {
+                        Console.WriteLine("Estoque cheio! . . .\n");
+                        Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+                        opcao = Menu();
+                        break;
+                    }
+
                     // Colocando nome do produto
                     Console.WriteLine("Digite o nome do produto:");
                     string nome = Console.ReadLine();
@@ -29,14 +38,7 @@ class Program
                     Console.WriteLine("Digite o preço do produto:");
                     double preco = Convert.ToDouble(Console.ReadLine());
 
-                    // Se o limite do estoque for atingido ele retorna a mensagem e da break no loop
-                    if (tamanhoEstoque == 5)
-                    {
-                        Console.WriteLine("Estoque cheio!");
-                        Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
-                        opcao = Menu();
-                        break;
-                    }
+                    Console.WriteLine("Produto Adicionado . . .\n");
 
                     // Adicionando o produto no estoque
                     estoque[tamanhoEstoque] = new Produto(nome, quantidade, preco);
@@ -52,12 +54,13 @@ class Program
                     break;
                 case 2:
                     // Printando todos os produtos em estoque
-                    Console.WriteLine("Estoque atual:");
+                    Console.WriteLine("\n");
                     foreach (Produto produto in estoque)
                     {
+                        // Não mostra produtos que sejam nullos, ou deja, que ainda não existem no array 
                         if (produto != null)
                         {
-                            Console.WriteLine(produto.MostrarProdutod());
+                            produto.MostrarProdutod();
                         }
                     }
 

@@ -21,9 +21,11 @@ namespace exercicio09
             _QuantidadeEstoque = quantidadeEstoque;
         }
 
-        public string MostrarProdutod()
+        public void MostrarProdutod()
         {
-            return $"Nome: {_Nome}\nQuantidade em Estoque: {_QuantidadeEstoque}\nPreço: R${_Preco}\n";
+            Console.WriteLine("================================");
+            Console.WriteLine($"\nNome: {_Nome}\nQuantidade Disponível: {_QuantidadeEstoque}\nPreço: R${_Preco}\n)");
+            Console.WriteLine("================================");
         }
     }
 }
