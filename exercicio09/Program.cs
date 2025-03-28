@@ -91,7 +91,7 @@ class Program
     // Método do Menu
     public static byte Menu() 
     {
-        Console.Clear();
+        Console.Clear(); // Limpando a tela
         Console.WriteLine("==========MENU==========");
         Console.WriteLine("Escolha uma das opções:\n\n1 - Inserir Produto\n2 - Listar Produtos\n3 - Sair\n");
         Console.WriteLine($"Cadastro Máximo de: 5");
