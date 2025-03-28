@@ -27,7 +27,7 @@ class Program
                     }
 
                     // Colocando nome do produto
-                    Console.WriteLine("Digite o nome do produto:");
+                    Console.WriteLine("\nDigite o nome do produto:");
                     string nome = Console.ReadLine();
 
                     // Colocando a quantidade do produto
@@ -62,16 +62,17 @@ class Program
                         {
                             produto.MostrarProdutod();
                         }
-                    }
 
+                    }
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+                    Console.WriteLine("\n"); // Pular uma linha por estética
 
                     // Chamando o menu de novo para selecionar uma nova opcao
                     opcao = Menu();
 
                     break;
                 default:
-                    Console.WriteLine("Opção inválida! Escolha uma opção válida . . .");
+                    Console.WriteLine("Opção inválida! Escolha uma opção válida . . .\n");
 
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
 
@@ -93,7 +94,7 @@ class Program
     {
         Console.WriteLine("==========MENU==========");
         Console.WriteLine("Escolha uma das opções:\n\n1 - Inserir Produto\n2 - Listar Produtos\n3 - Sair\n");
-        Console.WriteLine($"Cadastro Máximo de: 5\n");
+        Console.WriteLine($"Cadastro Máximo de: 5");
         return Convert.ToByte(Console.ReadLine());
     }
 
