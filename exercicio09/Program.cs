@@ -9,8 +9,8 @@ class Program
         short tamanhoEstoque = 0;
         Produto[] estoque = new Produto[5];
 
-        // Chamando o Menu de opções
-        Menu();
+        // Chamando o Menu de opções e iniciando na variavel opcao oq o usuário escolher
+        short opcao = Menu();
 
         do 
         {
@@ -33,6 +33,8 @@ class Program
                     if (tamanhoEstoque == 5)
                     {
                         Console.WriteLine("Estoque cheio!");
+                        Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+                        opcao = Menu();
                         break;
                     }
 
@@ -41,9 +43,15 @@ class Program
 
                     // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
                     tamanhoEstoque++;
-                    
+
+                    Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+
+                    //Chamando o menu de novo para selecionar uma nvoa opcao
+                    opcao = Menu();
+
                     break;
                 case 2:
+                    // Printando todos os produtos em estoque
                     Console.WriteLine("Estoque atual:");
                     foreach (Produto produto in estoque)
                     {
@@ -52,28 +60,38 @@ class Program
                             Console.WriteLine(produto.MostrarProdutod());
                         }
                     }
-                    break;
-                case 3:
-                    Console.WriteLine("Fechando Estoque! . . .");
-                    Console.ReadKey();
+
+                    Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+
+                    // Chamando o menu de novo para selecionar uma nova opcao
+                    opcao = Menu();
+
                     break;
                 default:
                     Console.WriteLine("Opção inválida! Escolha uma opção válida . . .");
+
+                    Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+
+                    // Chamando o menu de novo para selecionar uma nova opcao
+                    opcao = Menu();
+
                     break;
 
             }
             
         } while (opcao != 3);
+
+        Console.WriteLine("Fechando Estoque! . . .");
+        Console.ReadKey();
     }
 
+    // Método do Menu
     public static byte Menu() 
     {
         Console.WriteLine("==========MENU==========");
         Console.WriteLine("Escolha uma das opções:\n\n1 - Inserir Produto\n2 - Listar Produtos\n3 - Sair\n");
         Console.WriteLine($"Cadastro Máximo de: 5\n");
-        byte opcao = Convert.ToByte(Console.ReadLine());
-        return opcao;
-
+        return Convert.ToByte(Console.ReadLine());
     }
 
 
