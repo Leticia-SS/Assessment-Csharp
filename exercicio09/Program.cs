@@ -5,6 +5,8 @@ class Program
 {
     public static void Main(string[] args)
     {
+        // Pegando erro de digitação do código todo
+        try { 
         // Criando o objeto do estoque 
         short tamanhoEstoque = 0;
         Produto[] estoque = new Produto[5];
@@ -30,8 +32,11 @@ class Program
             switch (opcao) 
             {
                 case 1:
+                    // Vari[avel de verificação se o txt ta cheio
+                    int itensEstoque = File.Exists("Estoque.txt") ? File.ReadAllLines("Estoque.txt").Length : 0;
+
                     // Se o limite do estoque for atingido ele retorna a mensagem e da break no loop
-                    if (tamanhoEstoque >= 5)
+                    if (tamanhoEstoque >= 5 || itensEstoque >=5)
                     {
                         Console.WriteLine("Estoque cheio! . . .\n");
                         Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
@@ -67,7 +72,7 @@ class Program
                         }
                     } catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Erro ao salvar item em estoque. Erro:" + ex.Message);
                     }
 
                     // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
@@ -111,10 +116,10 @@ class Program
                         }
                     } catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
-                    }
+                            Console.WriteLine("Erro ao ler item em estoque. Erro:" + ex.Message);
+                        }
 
-                    Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
+                        Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
                     Console.WriteLine("\n"); // Pular uma linha por estética
 
                     // Chamando o menu de novo para selecionar uma nova opcao
@@ -133,7 +138,13 @@ class Program
 
         Console.WriteLine("Fechando Estoque! . . .");
         Console.ReadKey();
+    } catch (Exception ex)
+    {
+        Console.WriteLine("Errro: " + ex.Message);
+        Console.WriteLine("\nPressione qualquer tecla para sair...");
+        Console.ReadKey();
     }
+}
 
     // Método do Menu
     public static byte Menu() 
