@@ -94,17 +94,19 @@ class Program
                     // Controle de erro
                     try
                     {
+                        // Verificando se ta vazio
+                        if (new FileInfo("Estoque.txt").Length == 0)
+                        {
+                            Console.WriteLine("\nNenhum Produto Cadastrado");
+                            return;
+                        }
                         // Printando direto do arquivo txt
                         using (StreamReader lerTxt = new StreamReader("Estoque.txt"))
                         {
-                            if (lerTxt.ReadLine() == null)
+                            string linha;
+                            while ((linha = lerTxt.ReadLine()) != null)
                             {
-                                Console.WriteLine("\nNenhum Produto Cadastrado");
-                            }
-
-                            while (lerTxt.ReadLine() != null)
-                            {
-                                Console.WriteLine(lerTxt.ReadLine());
+                                Console.WriteLine(linha);
                             }
                         }
                     } catch (Exception ex)
@@ -117,18 +119,14 @@ class Program
 
                     // Chamando o menu de novo para selecionar uma nova opcao
                     opcao = Menu();
-
                     break;
                 default:
                     Console.WriteLine("\nOpção inválida! Escolha uma opção válida . . .\n");
-
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
 
                     // Chamando o menu de novo para selecionar uma nova opcao
                     opcao = Menu();
-
                     break;
-
             }
             
         } while (opcao != 3);
@@ -146,6 +144,4 @@ class Program
         Console.WriteLine($"Cadastro Máximo de: 5");
         return Convert.ToByte(Console.ReadLine());
     }
-
-
 }
