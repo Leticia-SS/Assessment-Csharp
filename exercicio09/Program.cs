@@ -9,10 +9,17 @@ class Program
         short tamanhoEstoque = 0;
         Produto[] estoque = new Produto[5];
 
-        // Se o arquiuvo não existir o sistema cria outro
-        if (!File.Exists("Estoque.txt"))
+        // Controle de erro
+        try
         {
-            File.Create("Estoque.txt").Close(); // Se usar o metodo create e não fechar o arquivo ele não vai permitir escrever 
+            // Se o arquiuvo não existir o sistema cria outro
+            if (!File.Exists("Estoque.txt"))
+            {
+                File.Create("Estoque.txt").Close(); // Se usar o metodo create e não fechar o arquivo ele não vai permitir escrever 
+            } 
+        } catch (Exception ex) 
+        {
+            Console.WriteLine("Erro ao criar o arquivo de estoque. Erro: " + ex.Message);
         }
 
         // Chamando o Menu de opções e iniciando na variavel opcao oq o usuário escolher
@@ -49,15 +56,22 @@ class Program
                     // Adicionando o produto no estoque
                     estoque[tamanhoEstoque] = new Produto(nome, quantidade, preco);
 
-                    // Adicionar produto no txt
-                    using (StreamWriter salvarTxt = new StreamWriter("Estoque.txt", append: true))
+                    // Controle de erro
+                    try
                     {
-                        // Adicionei alem do nome e preco a quantidade de estoque, mesmo não estando no exemplo da questão
-                        salvarTxt.WriteLine($"{estoque[tamanhoEstoque]._Nome}, {estoque[tamanhoEstoque]._Preco}, {estoque[tamanhoEstoque]._QuantidadeEstoque}");
+                        // Adicionar produto no txt
+                        using (StreamWriter salvarTxt = File.AppendText("Estoque.txt"))
+                        {
+                            // Adicionei alem do nome e preco a quantidade de estoque, mesmo não estando no exemplo da questão
+                            salvarTxt.WriteLine($"{estoque[tamanhoEstoque]._Nome}, {estoque[tamanhoEstoque]._Preco}, {estoque[tamanhoEstoque]._QuantidadeEstoque}");
+                        }
+                    } catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
                     }
 
-                        // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
-                        tamanhoEstoque++;
+                    // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
+                    tamanhoEstoque++;
 
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
 
@@ -66,30 +80,38 @@ class Program
 
                     break;
                 case 2:
-                    // Printando todos os produtos em estoque
-                    foreach (Produto produto in estoque)
-                    {
-                        // Não mostra produtos que sejam nullos, ou deja, que ainda não existem no array 
-                        if (produto != null)
-                        {
-                            produto.MostrarProdutod();
-                        }
+                    // Código da Parte A do exercício 9
+                    //// Printando todos os produtos em estoque
+                    //foreach (Produto produto in estoque)
+                    //{
+                    //    // Não mostra produtos que sejam nullos, ou deja, que ainda não existem no array 
+                    //    if (produto != null)
+                    //    {
+                    //        produto.MostrarProdutod();
+                    //    }
+                    //}
 
+                    // Controle de erro
+                    try
+                    {
+                        // Printando direto do arquivo txt
+                        using (StreamReader lerTxt = new StreamReader("Estoque.txt"))
+                        {
+                            if (lerTxt.ReadLine() == null)
+                            {
+                                Console.WriteLine("\nNenhum Produto Cadastrado");
+                            }
+
+                            while (lerTxt.ReadLine() != null)
+                            {
+                                Console.WriteLine(lerTxt.ReadLine());
+                            }
+                        }
+                    } catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
                     }
 
-                    // Printando direto do arquivo txt
-                    using (StreamReader lerTxt = new StreamReader("Estoque.txt"))
-                    {
-                        if (lerTxt.ReadLine() == null)
-                        {
-                            Console.WriteLine("Nenhum Produto Cadastrado");
-                        } else
-                        {
-                            lerTxt.ReadLine();
-                        }
-                    }
-
-                    
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
                     Console.WriteLine("\n"); // Pular uma linha por estética
 
