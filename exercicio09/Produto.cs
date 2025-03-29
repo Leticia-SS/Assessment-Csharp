@@ -23,7 +23,7 @@ namespace exercicio09
 
         public void MostrarProdutod()
         {
-            Console.WriteLine($"\nProduto: Nome: {_Nome} | Quantidade: {_QuantidadeEstoque} | Preço: R${_Preco})");
+            Console.WriteLine($"\nProduto: Nome: {_Nome} | Quantidade: {_QuantidadeEstoque} | Preço: R${_Preco}");
         }
     }
 }

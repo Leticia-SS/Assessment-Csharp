@@ -30,8 +30,17 @@
             for (int i = 0; i < arrayFrase[n].Length; i++)
             {
                 string palavra = arrayFrase[n];
-                char letra = (char)(palavra[i] + 2);
-                novaPalavra += letra;
+                if (palavra[i] == 'z' || palavra[i] == 'Z') // Condição caso seja z ela nçao altere para um caracter
+                {
+                    novaPalavra += 'b';
+                } else if (palavra[i] == 'y' || palavra[i] == 'Y') // Condição caso seja y ela nçao altere para um caracter
+                {
+                    novaPalavra += 'a';
+                } else
+                {
+                    char letra = (char)(palavra[i] + 2);
+                    novaPalavra += letra;
+                }
             }
 
             // Salvando a palavra atual no array na posição da palavra antiga

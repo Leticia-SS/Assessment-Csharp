@@ -9,6 +9,8 @@ class Program
         short tamanhoEstoque = 0;
         Produto[] estoque = new Produto[5];
 
+        StreamWriter salvartxt = new StreamWriter("Estoque.txt");
+
         // Chamando o Menu de opções e iniciando na variavel opcao oq o usuário escolher
         short opcao = Menu();
 
@@ -42,6 +44,9 @@ class Program
 
                     // Adicionando o produto no estoque
                     estoque[tamanhoEstoque] = new Produto(nome, quantidade, preco);
+
+                    // Adiciona no arquivo txt
+                    salvartxt.WriteLine(estoque[tamanhoEstoque]);
 
                     // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
                     tamanhoEstoque++;
