@@ -16,9 +16,11 @@ namespace exercicio11
             _Arquivo = arquivo;
         }
 
+        // Método para adicionar contato no arquivo
         public void AdicionarContato(Contato contato)
         {
-            Console.WriteLine("Adicionando contato no arquivo...");
+          // Tem que criar um new string[] pois usa um Ienumerable, que aceita um conjunto de dados de uma vez uma forma de fazer é passar um array
+            File.AppendAllLines(_Arquivo, new string[] { contato.ToString() });
         }
     }
 }

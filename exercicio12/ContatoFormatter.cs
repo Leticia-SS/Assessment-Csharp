@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace exercicio11
+namespace exercicio12
 {
-    internal class CadastroMemoria
+    internal class ContatoFormatter
     {
         // Criando lista para adicionar os contatos na memoria
         private List<Contato> _Memoria;
 
         // Construtor
-        public CadastroMemoria()
+        public ContatoFormatter()
         {
             _Memoria = new List<Contato>();
         }
@@ -23,18 +23,10 @@ namespace exercicio11
             _Memoria.Add(contato);
         }
 
-        //public List<Contato> ListarContatos()
-        //{
-        //    return _memoria;
-        //}
-
         // Mostrar a lista
-        public void MostrarContatos()
+        public List<Contato> ExibirContatos()
         {
-            foreach (var contato in _Memoria)
-            {
-                Console.WriteLine(contato);
-            }
+            return _Memoria;
         }
     }
 }
