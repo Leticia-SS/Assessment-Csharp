@@ -9,7 +9,11 @@ class Program
         short tamanhoEstoque = 0;
         Produto[] estoque = new Produto[5];
 
-        StreamWriter salvartxt = new StreamWriter("Estoque.txt");
+        // Se o arquiuvo não existir o sistema cria outro
+        if (!File.Exists("Estoque.txt"))
+        {
+            File.Create("Estoque.txt").Close(); // Se usar o metodo create e não fechar o arquivo ele não vai permitir escrever 
+        }
 
         // Chamando o Menu de opções e iniciando na variavel opcao oq o usuário escolher
         short opcao = Menu();
@@ -45,11 +49,15 @@ class Program
                     // Adicionando o produto no estoque
                     estoque[tamanhoEstoque] = new Produto(nome, quantidade, preco);
 
-                    // Adiciona no arquivo txt
-                    salvartxt.WriteLine(estoque[tamanhoEstoque]);
+                    // Adicionar produto no txt
+                    using (StreamWriter salvarTxt = new StreamWriter("Estoque.txt", append: true))
+                    {
+                        // Adicionei alem do nome e preco a quantidade de estoque, mesmo não estando no exemplo da questão
+                        salvarTxt.WriteLine($"{estoque[tamanhoEstoque]._Nome}, {estoque[tamanhoEstoque]._Preco}, {estoque[tamanhoEstoque]._QuantidadeEstoque}");
+                    }
 
-                    // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
-                    tamanhoEstoque++;
+                        // Adiciona 1 ao tamanho do estoque, e com isso quando chegar a 5 ele vai brecar no if em cima
+                        tamanhoEstoque++;
 
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
 
@@ -68,6 +76,20 @@ class Program
                         }
 
                     }
+
+                    // Printando direto do arquivo txt
+                    using (StreamReader lerTxt = new StreamReader("Estoque.txt"))
+                    {
+                        if (lerTxt.ReadLine() == null)
+                        {
+                            Console.WriteLine("Nenhum Produto Cadastrado");
+                        } else
+                        {
+                            lerTxt.ReadLine();
+                        }
+                    }
+
+                    
                     Console.ReadKey(); //Somente para dar um espaço para ler a msg antes de aparecer o menu
                     Console.WriteLine("\n"); // Pular uma linha por estética
 
