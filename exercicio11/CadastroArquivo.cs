@@ -37,12 +37,19 @@ namespace exercicio11
         {
             try
             {
-                using (StreamReader ler = new StreamReader(_Arquivo))
+                if (new FileInfo(_Arquivo).Length == 0)
                 {
-                    string linha;
-                    while ((linha = ler.ReadLine()) != null)
+                    Console.WriteLine("\nNenhum Produto Cadastrado");
+                }
+                else
+                {
+                    using (StreamReader ler = new StreamReader(_Arquivo))
                     {
-                        Console.WriteLine(linha);
+                        string linha;
+                        while ((linha = ler.ReadLine()) != null)
+                        {
+                            Console.WriteLine(linha);
+                        }
                     }
                 }
             }
