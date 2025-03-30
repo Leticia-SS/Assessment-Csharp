@@ -40,6 +40,7 @@
                 }
 
                 Console.WriteLine($"\nFaltam {meses} meses e {dias} dias para seu aniversário ! ! !");
+                Console.WriteLine($"Dias totais: {diferenca.Days}");
             }
 
         }
