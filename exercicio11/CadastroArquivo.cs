@@ -19,8 +19,7 @@ namespace exercicio11
         // Método para adicionar contato no arquivo
         public void AdicionarContato(Contato contato)
         {
-          // Tem que criar um new string[] pois usa um Ienumerable, que aceita um conjunto de dados de uma vez uma forma de fazer é passar um array
-            File.AppendAllLines(_Arquivo, new string[] { contato.ToString() });
+            string[] diretorios = Directory.GetDirectories(_Arquivo);
         }
     }
 }

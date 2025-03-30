@@ -23,7 +23,7 @@ namespace exercicio11
         // Método sobrescrevendo o método ToString para mostrar os contatos
         public override string ToString()
         {
-            return $"{_Nome} | {_Telefone} | {_Email}";
+            return $"Nome: {_Nome} | Telefone: {_Telefone} | Email: {_Email}";
         }
     }
 }
