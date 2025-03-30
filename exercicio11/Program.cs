@@ -6,7 +6,13 @@ class Program
     {
         try
         {
-            // Criando o arquivo para salvar os contatos
+            // Verificando se arquivo existe
+            if (!File.Exists("Contatos.txt"))
+            {
+                File.Create("Contatos.txt").Close(); 
+            }
+
+            // Criando o cadadstro de arquivos para salvar os contatos
             CadastroArquivo arquivo = new CadastroArquivo("Contatos.txt");
 
             byte opcao = Menu();
@@ -18,11 +24,16 @@ class Program
                 {
                     case 1:
                         arquivo.AdicionarContato(AddContato());
+                        Console.WriteLine("\nContato cadastrado com sucesso!");
+                        Console.ReadKey();
                         opcao = Menu();
                         break;
                     case 2:
-                        opcao = Menu();
+                        Console.WriteLine("\nContatos cadastrados:");
+                        Console.WriteLine("\n");
+                        arquivo.MostrarContatos();
                         Console.ReadKey();
+                        opcao = Menu();
                         break;
                     default:
                         Console.WriteLine("\nOpção inválida");
@@ -31,7 +42,7 @@ class Program
                         break;
                 }
             }
-            Console.WriteLine("\nFechando o programa . . .");
+            Console.WriteLine("\nEncerrando o programa . . .");
         }
         catch (Exception ex)
         {

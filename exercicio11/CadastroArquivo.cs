@@ -19,7 +19,37 @@ namespace exercicio11
         // Método para adicionar contato no arquivo
         public void AdicionarContato(Contato contato)
         {
-            string[] diretorios = Directory.GetDirectories(_Arquivo);
+            try
+            {
+                using (StreamWriter ler = new StreamWriter(_Arquivo, true))
+                {
+                    ler.WriteLine(contato.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao inserir no arquivo: " + e.Message);
+            }
+        }
+
+        // Método para mostrar os contatos do arquivo
+        public void MostrarContatos()
+        {
+            try
+            {
+                using (StreamReader ler = new StreamReader(_Arquivo))
+                {
+                    string linha;
+                    while ((linha = ler.ReadLine()) != null)
+                    {
+                        Console.WriteLine(linha);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao ler do arquivo: " + e.Message);
+            }
         }
     }
 }
