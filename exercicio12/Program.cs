@@ -4,7 +4,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        // Console.OutputEncoding = System.Text.Encoding.UTF8; // Para aceitar emoji == Não funcionou
+        Console.OutputEncoding = System.Text.Encoding.UTF8; // Para aceitar emoji == Não funcionou
         try
         {
             if (!File.Exists("Contatos.txt"))
