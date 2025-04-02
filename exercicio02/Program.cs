@@ -30,17 +30,22 @@
             for (int i = 0; i < arrayFrase[n].Length; i++)
             {
                 string palavra = arrayFrase[n];
-                if (palavra[i] == 'z' || palavra[i] == 'Z') // Condição caso seja z ela nçao altere para um caracter
+                char letra;
+                if (palavra[i] >= 'a' && palavra[i] <= 'z') // Verirfica se é maisculo 
                 {
-                    novaPalavra += 'b';
-                } else if (palavra[i] == 'y' || palavra[i] == 'Y') // Condição caso seja y ela nçao altere para um caracter
+                    // a começa em 97 e z termina em 122
+                    letra = (char)(((palavra[i] + 2 - 'a') % 26) + 'a'); // Faz o cálculo de acordo com o indice dos characteres
+                } 
+                else if(palavra[i] >= 'A' && palavra[i] <= 'Z')
                 {
-                    novaPalavra += 'a';
-                } else
-                {
-                    char letra = (char)(palavra[i] + 2);
-                    novaPalavra += letra;
+                    // A é 65 e Z é 90
+                    letra= (char)(((palavra[i] + 2 - 'A') % 26) + 'A');
                 }
+                else
+                {
+                    letra = palavra[i]; // Se não for letra ele ignora
+                }
+                novaPalavra += letra;
             }
 
             // Salvando a palavra atual no array na posição da palavra antiga
