@@ -1,4 +1,4 @@
-#Assessment C#
+# Assessment C#
 
 ## 🚀 Project Overview
 This repository contains a structured learning path for mastering C# and .NET fundamentals through practical exercises. From environment setup to advanced OOP concepts, these exercises are designed to build real-world programming skills.
